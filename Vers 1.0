@@ -50,7 +50,7 @@ class Herbergi(HansogGretaSp3):
         s1 = int(s1)
         while(s1 != 4):
             print('Rangt svar. Reyndu aftur!')
-            print('Hvað er 1+1?')
+            print('Hvað er 2+2?')
             s1 = input('Mitt svar:')
             s1 = int(s1)
         print('Rétt hjá þér! Áfram í næsta herbergi.')
@@ -62,7 +62,7 @@ class Herbergi(HansogGretaSp3):
         s1 = int(s1)
         while(s1 != 6):
             print('Rangt svar. Reyndu aftur!')
-            print('Hvað er 1+1?')
+            print('Hvað er 3+3?')
             s1 = input('Mitt svar:')
             s1 = int(s1)
         print('Rétt hjá þér! Áfram í næsta herbergi.')
