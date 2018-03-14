@@ -1,0 +1,23 @@
+def problem1(self):
+        tilraunir = 10
+        print('Búðu til fjögur fjögurra stafa orð úr stöfunum í orðinu: Piparkaka')
+        print('Þú færð 10 tilraunir.')
+        o = ['Kaka', 'Prik', 'Rapp', 'Krap']
+        while tilraunir > 0:
+            a = 0
+            for i in o:
+                s1 = input('Orðið mitt:')
+                s1 = str(s1)
+                if s1 == i:
+                    print('Rétt hjá þér!')
+                    del o[a]
+                    a += 1
+                    if len(o) != 0:
+                        print('Giskaðu á næsta orð.')
+                else:
+                    tilraunir -= 1
+                    if tilraunir != 0:
+                        print('Rangt svar. Reyndu aftur! Tilraunir eftir:'  + repr(tilraunir))
+                    else:
+                        print('Þú ert búin/n með allar tilraunirnar þínar og missir eitt líf.')
+                        return
