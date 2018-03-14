@@ -1,0 +1,18 @@
+    def problem3(self):
+        with open('thraut3.txt') as spurning:
+            data = spurning.read
+        print(data)
+        print('Ýttu á "1" og þá mun birtast mynd af glugganum í kofanum.')
+        a = input('')
+        a = int(a)
+        im = Image.open('gluggi.png')
+        im.show()
+        s1 = input('Fjöldi ferninga:')
+        s1 = int(s1)
+        while(s1 != 30):
+            print('Rangt svar. Reyndu aftur!')
+            print('Hvað eru ferningarnir margir?')
+            s1 = input('Fjöldi ferninga:')
+            s1 = int(s1)
+        print('Rétt hjá þér! Áfram í næsta herbergi.')
+        return
