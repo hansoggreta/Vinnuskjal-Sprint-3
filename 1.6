@@ -1,0 +1,231 @@
+Version 1.6
+
+import os, sys
+import time
+
+
+class HansogGretaSp3(object):
+     def getName(self): pass
+     def getDescription(self): pass
+     def answer(self): pass
+     def move(self): pass
+     def kill(self): pass
+     def clue(self): pass
+     def removeElement(self): pass
+     def eldhusLokad(self): pass
+
+class Lif(HansogGretaSp3):
+    def __init__(self, herb, hjalp):
+        self.herb = herb
+        self.hjalp = hjalp
+        #self.lif = lif
+        if self.hjalp == True:
+            self.Visbending()
+        '''if self.hjalp == True and self.lif <= 0:
+            with open('NeitaVísbendingu.txt',encoding = "utf-8") as spurning:
+                data = spurning.read()
+                print(data)'''
+        return
+
+    def Visbending(self):
+        #Birtir visbendingu sé þess óskað
+        if self.herb == 1:
+            pass
+        if self.herb == 2:
+            with open('visbending2.txt',encoding = "utf-8") as spurning:
+                data = spurning.read()
+                print(data)
+                #lif = lif - 1
+        if self.herb == 3:
+            pass
+        if self.herb == 4:
+            pass
+
+class Herbergi(HansogGretaSp3):
+    def __init__(self, name, herb):
+        self.name= name
+        self.herb= herb
+        self.StartingProblem()
+
+    def StartingProblem(self): #Method sem býr til þraut, g.r.f. að hluturinn self.herb haldist hér úr smið, t.d. ef self.herb == 1 þá helst það hér
+        description= self.getDescription()
+        print(description)
+        if self.herb == 1:
+            self.problem1()
+        elif self.herb == 2:
+            self.problem2()
+        elif self.herb == 3:
+            self.problem3()
+        elif self.herb == 4:
+            self.problem4()
+
+    def problem1(self):
+        time.sleep(1)
+        tilraunir = 10
+        print('Búðu til 4 fjögurra stafa orð úr stöfunum í orðinu: Piparkaka')
+        print('Þú færð 10 tilraunir.')
+        while tilraunir > 0:
+            o1 = 'Kaka'
+            o2 = 'Prik'
+            o3 = 'Rapp'
+            o4 = 'Krap'
+            s1 = input('Mitt orð:')
+            if s1 == o1 or s1 == o2 or s1 == o3 or s1 == o4:
+                print('Rétt hjá þér! Tilraunir eftir:' + repr(tilraunir))
+                break
+            else:
+                tilraunir -= 1
+                print('Rangt svar.  Tilraunir eftir:' + repr(tilraunir))
+                if tilraunir is not 0:
+                    print('Reyndu aftur!')
+            if tilraunir == 0:
+                print('Þú hefur notað allar tilraunirnar þínar og missir eitt líf.')
+                return
+        print('Þú náðir að leysa þrautina! Áfram í næsta herbergi.')
+        return
+
+    def problem2(self):
+        time.sleep(1)
+        tilraun = 3
+        with open('thraut2.txt',encoding = "utf-8") as spurning:
+            data = spurning.read()
+        print(data)
+        s1 = input('Fjöldi umferða:')
+        hjalp = "hjalp"
+        if s1 == hjalp:
+            s1 = hjalp
+        else:
+            s1 = int(s1)
+        while(s1 != 2 and tilraun > 0):
+            if s1 == hjalp:
+                hjalp = True
+                Lif(self.herb, hjalp)
+                s1 = input('Fjöldi umferða:')
+                tilraun = tilraun - 1
+            else:
+                s1 = int(s1)
+            tilraun = tilraun - 1
+            if tilraun > 0:
+                print('Rangt svar. Þú mátt reyna aftur. Þú átt eftir ' + repr(tilraun) + ' tilraunir')
+                s1 = input('Fjöldi umferða:')
+                s1 = int(s1)
+            else:
+                print('Rangt svar. Þú ert búinn með allar tilraunirnar þínar. Þú ert búinn að missa eitt líf')
+                tilraun = 3
+                #lif = lif - 1 - Hér tapar maður lífi
+        print('Rétt hjá þér! Áfram í næsta herbergi.')
+        return
+
+    def problem3(self):
+        with open('thraut3.txt', encoding = 'utf-8') as spurning:
+            data = spurning.read()
+        print(data)
+        print('Ýttu á "1" og þá mun birtast mynd af glugganum í kofanum.')
+        a = input('')
+        a = int(a)
+        im = Image.open('gluggi.png')
+        im.show()
+        s1 = input('Fjöldi ferninga:')
+        s1 = int(s1)
+        while(s1 != 30):
+            print('Rangt svar. Reyndu aftur!')
+            print('Hvað eru ferningarnir margir?')
+            s1 = input('Fjöldi ferninga:')
+            s1 = int(s1)
+        print('Rétt hjá þér! Áfram í næsta herbergi.')
+        return
+
+    def problem4(self):
+        print('Hvað er 4+4?')
+        s1 = input('Mitt svar:')
+        s1 = int(s1)
+        while(s1 != 8):
+            print('Rangt svar. Reyndu aftur!')
+            print('Hvað er 4+4?')
+            s1 = input('Mitt svar:')
+            s1 = int(s1)
+        print('Rétt hjá þér!')
+        return
+
+    def getName(self):
+        return self.name
+
+    def getDescription(self):
+        #time.sleep(1)
+        print('Þú ert í herberginu:', self.name)
+        if self.herb == 1:
+            #time.sleep(1)
+            return 'Herbergið þar sem vonda nornin horfir á sjónvarpið'
+        elif self.herb == 2:
+            #time.sleep(1)
+            return 'Herbergið þar sem vonda nornin sefur'
+        elif self.herb == 3:
+            #time.sleep(1)
+            return 'Herbergið þar sem vonda nornin tannburstar sig'
+        elif self.herb == 4:
+            #time.sleep(1)
+            return 'Herbergið þar sem vonda nornin vill elda Hans'
+
+class Persona(Herbergi):
+    def __init__(self, kyn, name, description):
+        self.name= name
+        self.description= description
+        self.kyn= kyn
+
+    def getName(self):
+        return self.name
+
+    def getDescription(self):
+        return self.description
+    def kyn(self):
+        if self.kyn == 1:
+            return 'Kvenkyns'
+        else:
+            return 'Karlkyns'
+
+def main():
+    win = False #Verður true þegar allar þrautirnar i leiknum hafa verið leystar
+    with open('upphaf.txt',encoding = "utf-8") as texti:
+        data = texti.read()
+    print(data)
+    while(1):
+        print("Hvort viltu leika Hans eða Grétu? Skrifaðu 1 fyrir Grétu eða 2 fyrir Hans.")
+        val = input('Mitt val:' )
+        val = int(val)
+        if val == 1:
+            print("Þú hefur valið Grétu")
+            s = Persona(1, 'Gréta', 'Lítil stelpa með ljóst hár')
+            break
+        elif val == 2:
+            print("Þú hefur valið Hans")
+            name = 'Hans'
+            s = Persona(0, 'Hans', 'Lítill strákur með dökkt hár')
+            break
+        else:
+            print("Þú þarft að skrifa 1 fyrir Grétu eða 2 fyrir Hans.")
+            val = input ('Mitt val: ')
+            val = int(val)
+    while(win == False):
+    #    herb = input('Hvaða herbergi viltu fara í? Veldu 1 fyrir stofu, 2 fyrir svefnherbergi og 3 fyrir baðherbergi.')
+    #    herb = int(herb)
+        #time.sleep(1)
+        print('Þú ert komin/n í stofuna. Gangi þér vel að leysa þrautina.')
+        herb = 1
+        h1 = Herbergi('Stofa', herb)
+        #input nýtt herbergi
+        print('Þú ert komin/n í svefnherbergið. Gangi þér vel að leysa þrautina.')
+        herb=2
+        h2=Herbergi('Svefnherbergi', herb)
+
+        print('Þú ert komin/n í baðherbergið. Gangi þér vel að leysa þrautina.')
+        herb=3
+        h3=Herbergi('Baðherbergi', herb)
+
+        print('Þú ert komin/n í síðasta herbergið sem er eldhúsið. Gangi þér vel að leysa þrautina. Vonandi nær nornin ekki að elda Hans.')
+        herb=4
+        h4=Herbergi('Eldhús', herb)
+
+        win = True
+    print('Þú hefur unnið leikinn!')
+if __name__ == "__main__":
+    main()
