@@ -3,6 +3,12 @@ import os, sys
 import time
 
 
+from turtle import Turtle, Screen
+
+import os, sys
+import time
+
+
 class HansogGretaSp3(object):
      def getName(self): pass
      def getDescription(self): pass
@@ -61,7 +67,7 @@ class Herbergi(HansogGretaSp3):
             self.problem4()
 
     def problem1(self):
-        tilraunir = 10
+        '''tilraunir = 10
         print('Búðu til fjögur fjögurra stafa orð úr stöfunum í orðinu: Piparkaka')
         print('Þú færð 10 tilraunir. Ef þú vilt fá vísbendingu skaltu skrifa "hjalp"')
         o = ['kaka', 'prik', 'rapp', 'krap']
@@ -99,7 +105,7 @@ class Herbergi(HansogGretaSp3):
                 if tilraunir != 0:
                     print('Rangt svar. Reyndu aftur! Tilraunir eftir:'  + repr(tilraunir))
                 else:
-                    print('Þú ert búin/n með allar tilraunirnar þínar og missir eitt líf.')
+                    print('Þú ert búin/n með allar tilraunirnar þínar og missir eitt líf.')'''
         return
 
     def problem2(self):
@@ -109,10 +115,12 @@ class Herbergi(HansogGretaSp3):
             data = spurning.read()
         print(data)
         s1 = 0
+        print("Test 1")
         while(s1 != 2 and tilraun > 0):
             s1 = input('Fjöldi umferða:')
             hjalp = "hjalp"
             if s1 == hjalp:
+                print("Test hjalp")
                 print('Þú missir eina tilraun ef þú vilt sjá vísbendinguna')
                 svar = input('Ertu viss um að þú viljir halda áfram? (j/n):')
                 if svar == 'j':
@@ -124,16 +132,17 @@ class Herbergi(HansogGretaSp3):
                         print('Þú ert búinn að fá vísbendinguna')
                         s1 = input('Fjöldi umferða:')
                     s1 = int(s1)
+                    if s1 != 2:
+                        tilraun = tilraun - 1
 
             else:
                 s1 = int(s1)
                 tilraun = tilraun - 1
 
             if tilraun > 0 and s1 != 2:
-                    print('Rangt svar. Þú mátt reyna aftur. Þú átt eftir ' + repr(tilraun) + ' tilraunir')
-                    s1 = input('Fjöldi umferða:')
+                print('Rangt svar. Þú mátt reyna aftur. Þú átt eftir ' + repr(tilraun) + ' tilraunir')
 
-            else:
+            elif tilraun == 0 and s1 != 2:
                 print('Rangt svar. Þú ert búinn með allar tilraunirnar þínar. Þú ert búinn að missa eitt líf')
                 tilraun = 3
                 #lif = lif - 1 - Hér tapar maður lífi
@@ -256,3 +265,4 @@ def main():
     print('Þú hefur unnið leikinn!')
 if __name__ == "__main__":
     main()
+
