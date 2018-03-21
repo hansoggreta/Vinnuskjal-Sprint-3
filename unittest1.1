@@ -1,0 +1,25 @@
+from HansogGretaSp3 import Herbergi
+import unittest
+import sys
+
+#Komast að þvi hvernig við Fake-um input
+
+#
+
+
+class TestHerbergi(unittest.TestCase):
+#    def setUp:
+#        pass
+
+    def test_herbergi1_wrong_answer(self):
+        sys.stdin = open("preprogrammed_inputs.txt")
+        self.herbergi = Herbergi("h1", 1)
+        self.assertEqual(0, self.herbergi.tilraunir)
+
+    def test_herbergi1_wrong_room(self):
+        sys.stdin = open("preprogrammed_inputs.txt")
+        self.herbergi = Herbergi("h1", 55)
+
+
+if __name__ == '__main__':
+    unittest.main()
