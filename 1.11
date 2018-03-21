@@ -80,17 +80,16 @@ class Herbergi(HansogGretaSp3):
             s1 = input('Orðið mitt:')
             hjalp = 'hjalp'
             if s1 == hjalp:
-                if s1 == hjalp:
-                    print('Þú missir eina tilraun ef þú vilt sjá vísbendinguna')
-                    svar = input('Ertu viss um að þú viljir halda áfram? (j/n):')
-                    if svar == 'j':
-                        hjalp = True
-                        Lif(self.herb, hjalp)
-                        tilraunir = tilraunir - 1
+                print('Þú missir eina tilraun ef þú vilt sjá vísbendinguna')
+                svar = input('Ertu viss um að þú viljir halda áfram? (j/n):')
+                if svar == 'j':
+                    hjalp = True
+                    Lif(self.herb, hjalp)
+                    tilraunir = tilraunir - 1
+                    s1 = input('Orðið mitt:')
+                    if s1 == hjalp:
+                        print('Þú ert búinn að fá vísbendinguna')
                         s1 = input('Orðið mitt:')
-                        if s1 == hjalp:
-                            print('Þú ert búinn að fá vísbendinguna')
-                            s1 = input('Orðið mitt:')
             s1 = str(s1)
             s1 = s1.lower()
             if s1 in fundin:
@@ -227,23 +226,27 @@ def main():
     with open('upphaf.txt',encoding = "utf-8") as texti:
         data = texti.read()
     print(data)
-    while(1):
+    VeljaPersonu = False
+    while(VeljaPersonu == False):
         print("Hvort viltu leika Hans eða Grétu? Skrifaðu 1 fyrir Grétu eða 2 fyrir Hans.")
         val = input('Mitt val:' )
-        val = int(val)
-        if val == 1:
-            print("Þú hefur valið Grétu")
-            s = Persona(1, 'Gréta', 'Lítil stelpa með ljóst hár')
-            break
-        elif val == 2:
-            print("Þú hefur valið Hans")
-            name = 'Hans'
-            s = Persona(0, 'Hans', 'Lítill strákur með dökkt hár')
-            break
-        else:
-            print("Þú þarft að skrifa 1 fyrir Grétu eða 2 fyrir Hans.")
-            val = input ('Mitt val: ')
+        if val.isdigit() == True:
             val = int(val)
+            if val == 1:
+                print("Þú hefur valið Grétu")
+                s = Persona(1, 'Gréta', 'Lítil stelpa með ljóst hár')
+                VeljaPersonu = True
+            elif val == 2:
+                print("Þú hefur valið Hans")
+                name = 'Hans'
+                s = Persona(0, 'Hans', 'Lítill strákur með dökkt hár')
+                VeljaPersonu = True
+            else:
+                print("Þú þarft að skrifa 1 fyrir Grétu eða 2 fyrir Hans.")
+        else:
+            print('Þú verður að skrifa tölustaf')
+
+
     while(win == False):
     #    herb = input('Hvaða herbergi viltu fara í? Veldu 1 fyrir stofu, 2 fyrir svefnherbergi og 3 fyrir baðherbergi.')
     #    herb = int(herb)
@@ -270,3 +273,4 @@ def main():
     print('Þú hefur unnið leikinn!')
 if __name__ == "__main__":
     main()
+
