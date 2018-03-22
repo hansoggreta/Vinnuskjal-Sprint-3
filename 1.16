@@ -1,6 +1,11 @@
+#!/usr/bin/env python
+# -*- coding: latin-1 -*-
+import os 
+import sys
+import turtle
+
 from turtle import Turtle, Screen
 
-import os, sys
 import time
 
 
@@ -163,28 +168,65 @@ class Herbergi(HansogGretaSp3):
         return
 
     def problem3(self):
-        '''print('-------')
+        time.sleep(1)
+        tilraun = 5
+        print('-------')
         print('ÞRAUT 3')
-        print('-------')'''
-        '''with open('thraut3.txt', encoding = 'latin-1') as spurning:
+        print('-------')
+        with open('thraut3.txt', encoding = 'latin-1') as spurning:
             data = spurning.read()
         print(data)
-        print('Ýttu á "1" og þá mun birtast mynd af glugganum í kofanum.')
-        a = input('')
-        a = int(a)
-        t = Turtle()
-        t.screen.bgpic("gluggi.gif")
+
+        print('Ýttu á einhvern takk á lyklaborðinu og þá mun birtast mynd af glugganum í kofanum.')
+
+        a = 0
+        while (a != 1 and tilraun > 0):
+            a = input()
+            print('Þú verður að ýta á einhvern takka til að glugginn birtist')
+            break
+
+        print("TEST") #gefur okkur villu í prófun (ef valið er utan 1)
+
+        screen = turtle.Screen()
+        screen.setup(600,600)
+        screen.bgpic("gluggi.gif") #Finna út hvernig ég birti gluggann
+
         print("Test 1")
-        #im = Image.open('gluggi.png')
-        #im.show()
-        s1 = input('Fjöldi ferninga:')
-        s1 = int(s1)
-        while(s1 != 30):
-            print('Rangt svar. Reyndu aftur!')
-            print('Hvað eru ferningarnir margir?')
+
+        s1 = 0
+        hjalp = "hjalp"
+        NotaVisbendingu = False
+        while(s1 != 30 and tilraun > 0):
             s1 = input('Fjöldi ferninga:')
-            s1 = int(s1)
-        print('Rétt hjá þér! Áfram í næsta herbergi.')'''
+            if s1 == hjalp and NotaVisbendingu == False:
+                print("Test hjalp")
+                print('Þú missir eina tilraun ef þú vilt sjá vísbendinguna')
+                svar = input('Ertu viss um að þú viljir halda áfram? (j/n):')
+                if svar == 'j':
+                    NotaVisbendingu = True
+                    Lif(self.herb, NotaVisbendingu)
+                    tilraun = tilraun - 1
+
+            elif s1 == hjalp and NotaVisbendingu == True:
+                print('Þú ert búinn að fá vísbendinguna.')
+
+            elif s1.isdigit() == True:
+                s1 = int(s1)
+                tilraun = tilraun - 1
+
+                if tilraun > 0 and s1 != 30:
+                    print('Rangt svar. Þú mátt reyna aftur. Þú átt eftir ' + repr(tilraun) + ' tilraunir')
+
+                elif tilraun == 0 and s1 != 30:
+                    print('Rangt svar. Þú ert búinn með allar tilraunirnar þínar. Þú ert búinn að missa eitt líf')
+                    tilraun = 5
+                    #lif = lif - 1 - Hér tapar maður lífi
+
+            else:
+                print('Þú verður að setja inn tölustaf. Ef þú vilt fá vísbendingu skaltu skrifa "hjalp"')
+
+
+        print('Rétt hjá þér! Áfram í næsta herbergi.')
         return
 
     def problem4(self):
